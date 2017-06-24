@@ -25,9 +25,10 @@ from keras.optimizers import Adam
 # download the mnist to the path '~/.keras/datasets/' if it is the first time to be called
 # X shape (60,000 28x28), y shape (10,000, )
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
-
+print( X_train[:5] )
 # data pre-processing
 X_train = X_train.reshape(-1, 1,28, 28)/255.
+print( X_train[:5] )
 X_test = X_test.reshape(-1, 1,28, 28)/255.
 y_train = np_utils.to_categorical(y_train, num_classes=10)
 y_test = np_utils.to_categorical(y_test, num_classes=10)
@@ -37,7 +38,7 @@ model = Sequential()
 
 # Conv layer 1 output shape (32, 28, 28)
 model.add(Convolution2D(
-    batch_input_shape=(64, 1, 28, 28),
+    batch_input_shape=(32, 1, 28, 28),
     filters=32,
     kernel_size=5,
     strides=1,
@@ -80,11 +81,11 @@ model.compile(optimizer=adam,
 
 print('Training ------------')
 # Another way to train the model
-model.fit(X_train, y_train, epochs=1, batch_size=64,)
+model.fit(X_train, y_train, epochs=1, batch_size=32,)
 
 print('\nTesting ------------')
 # Evaluate the model with the metrics we defined earlier
-loss, accuracy = model.evaluate(X_test, y_test)
+loss, accuracy = model.evaluate(X_test, y_test,batch_size=32)
 
 print('\ntest loss: ', loss)
 print('\ntest accuracy: ', accuracy)

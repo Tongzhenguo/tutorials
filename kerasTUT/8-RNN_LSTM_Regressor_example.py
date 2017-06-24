@@ -62,8 +62,8 @@ for step in range(501):
     pred = model.predict(X_batch, BATCH_SIZE)
     plt.plot(xs[0, :], Y_batch[0].flatten(), 'r', xs[0, :], pred.flatten()[:TIME_STEPS], 'b--')
     plt.ylim((-1.2, 1.2))
-    plt.draw()
-    plt.pause(0.1)
+    plt.draw() #Redraw the current figure.
+    plt.pause(0.1) # Pause for *interval* seconds.
     if step % 10 == 0:
         print('train cost: ', cost)
 
