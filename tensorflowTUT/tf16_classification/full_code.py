@@ -40,7 +40,7 @@ prediction = add_layer(xs, 784, 10,  activation_function=tf.nn.softmax)
 
 # the error between prediction and real data
 cross_entropy = tf.reduce_mean(-tf.reduce_sum(ys * tf.log(prediction),
-                                              reduction_indices=[1]))       # loss
+                                              reduction_indices=[1]))       # mini batch mean loss
 train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
 
 sess = tf.Session()

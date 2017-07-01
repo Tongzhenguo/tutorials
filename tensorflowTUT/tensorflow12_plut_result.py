@@ -54,7 +54,7 @@ sess.run(init)
 fig = plt.figure()
 ax = fig.add_subplot(1,1,1)
 ax.scatter(x_data, y_data)
-plt.ion()
+plt.ion() #不让程序暂停在这里
 plt.show()
 
 for i in range(1000):

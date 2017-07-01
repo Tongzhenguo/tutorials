@@ -20,8 +20,8 @@ biases = tf.Variable(tf.zeros([1]))
 
 y = Weights*x_data + biases
 
-loss = tf.reduce_mean(tf.square(y-y_data))
-optimizer = tf.train.GradientDescentOptimizer(0.5)
+loss = tf.reduce_mean(tf.square(y-y_data)) #mes
+optimizer = tf.train.GradientDescentOptimizer(0.5) #lr
 train = optimizer.minimize(loss)
 
 init = tf.initialize_all_variables()
